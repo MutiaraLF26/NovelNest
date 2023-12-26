@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             BukuSeeder::class,
+            GenreSeeder::class
         ]);
     }
 }
