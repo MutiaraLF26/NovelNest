@@ -16,26 +16,13 @@ use App\Http\Controllers\ProfileController;
 |
 */
 Route::get('/', function () {
-    return view('dashboard.user.index');
+    return view('welcome');
 });
 Route::get('/bestSeller', function () {
     return view('feedback');
 });
 Route::get('/feedback', function () {
     return view('feedback');
-});
-Route::get('/bestSeller', function () {
-    return view('feedback');
-});
-Route::get('/feedback', function () {
-    return view('feedback');
-});
-
-Route::get('/home', function () {
-    return view('home');
-});
-Route::get('/about', function () {
-    return view('about');
 });
 Route::get('/genre', function () {
     return view('dashboard.user.genre.index');
@@ -55,7 +42,25 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register.index');
 });
-
+// admin
+Route::get('/admin', function () {
+    return view('dashboard.admin.layout.main');
+});
+Route::get('/admin/users', function () {
+    return view('dashboard.admin.users.index');
+});
+Route::get('/admin/genre', function () {
+    return view('dashboard.admin.genre.index');
+});
+Route::get('/feedback', function () {
+    return view('feedback');
+});
+Route::get('/feedback', function () {
+    return view('feedback');
+});
+Route::get('/about', function () {
+    return view('about');
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
