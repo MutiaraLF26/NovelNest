@@ -15,13 +15,13 @@ class BukuController extends Controller
 
     public function create()
     {
-        return view('dashboard.amin.buku.create');
+        return view('dashboard.admin.buku.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required|max:255|min:3',       
+            'judul' => 'required|max:255|min:3',
         ]);
 
         Buku::create($request->all());
@@ -31,7 +31,7 @@ class BukuController extends Controller
 
     public function show(Buku $buku)
     {
-        return view('dashboard.admi.buku.show', compact('buku'));
+        return view('dashboard.admin.buku.show', compact('buku'));
     }
 
     public function edit(Buku $buku)
