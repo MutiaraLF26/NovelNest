@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('buku', function (Blueprint $table) {
+        Schema::create('bukus', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
             $table->text('deskripsi');
-            $table->string('views');
-            $table->string('suka');
-            $table->string('halaman');
-            $table->string('favorit');
-            $table->integer('user_id');
-            $table->integer('genre_id');
+            $table->integer('views');
+            $table->integer('suka');
+            $table->integer('halaman');
+            $table->integer('favorit');
+            $table->integer('user_id')->nullable();
+            $table->integer('genre_id')->nullable();
             $table->timestamps();
         });
     }
