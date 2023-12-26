@@ -11,9 +11,9 @@
     <div class="min-h-full">
         @include('dashboard.layout.navbar')
         <main>
-            <div>
+    
                 @yield('container')
-            </div>
+
         </main>
         
         @include('dashboard.layout.footer')

@@ -24,6 +24,13 @@ Route::get('/bestSeller', function () {
 Route::get('/feedback', function () {
     return view('feedback');
 });
+Route::get('/bestSeller', function () {
+    return view('feedback');
+});
+Route::get('/feedback', function () {
+    return view('feedback');
+});
+
 Route::get('/home', function () {
     return view('home');
 });

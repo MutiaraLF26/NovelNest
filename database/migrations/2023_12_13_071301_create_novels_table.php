@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('novels', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('images');
             $table->string('author');
-            $table->string('genre');
-            $table->string('status');
+            $table->string('deskripsi_buku ');
+            $table->string('judul_buku');
             $table->timestamps();
         });
     }
