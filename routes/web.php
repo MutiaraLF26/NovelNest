@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BukuController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,5 +62,22 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+Route::middleware(['auth'])->group(function () {
+    Route::get('/users', [BukuController::class, 'index'])->name('users.index');
+    Route::get('/users/{user}', [BukuController::class, 'show'])->name('users.show');
+    Route::get('/users/create', [BukuController::class, 'create'])->name('users.create');
+    Route::post('/users', [BukuController::class, 'store'])->name('users.store');
+    Route::get('/users/{user}/edit', [BukuController::class, 'edit'])->name('users.edit');
+    Route::patch('/users/{user}', [BukuController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [BukuController::class, 'destroy'])->name('users.destroy');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::get('/users', [GenreController::class, 'index'])->name('users.index');
+    Route::get('/users/{user}', [GenreController::class, 'show'])->name('users.show');
+    Route::get('/users/create', [GenreController::class, 'create'])->name('users.create');
+    Route::post('/users', [GenreController::class, 'store'])->name('users.store');
+    Route::get('/users/{user}/edit', [GenreController::class, 'edit'])->name('users.edit');
+    Route::patch('/users/{user}', [GenreController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [GenreController::class, 'destroy'])->name('users.destroy');
+});
 require __DIR__.'/auth.php';
