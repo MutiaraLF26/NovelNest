@@ -71,13 +71,4 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/users/{user}', [BukuController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [BukuController::class, 'destroy'])->name('users.destroy');
 });
-Route::middleware(['auth'])->group(function () {
-    Route::get('/users', [GenreController::class, 'index'])->name('users.index');
-    Route::get('/users/{user}', [GenreController::class, 'show'])->name('users.show');
-    Route::get('/users/create', [GenreController::class, 'create'])->name('users.create');
-    Route::post('/users', [GenreController::class, 'store'])->name('users.store');
-    Route::get('/users/{user}/edit', [GenreController::class, 'edit'])->name('users.edit');
-    Route::patch('/users/{user}', [GenreController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [GenreController::class, 'destroy'])->name('users.destroy');
-});
 require __DIR__.'/auth.php';
