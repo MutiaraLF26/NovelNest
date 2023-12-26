@@ -71,22 +71,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::middleware(['auth'])->group(function () {
-    Route::get('/users', [BukuController::class, 'index'])->name('users.index');
-    Route::get('/users/{user}', [BukuController::class, 'show'])->name('users.show');
-    Route::get('/users/create', [BukuController::class, 'create'])->name('users.create');
-    Route::post('/users', [BukuController::class, 'store'])->name('users.store');
-    Route::get('/users/{user}/edit', [BukuController::class, 'edit'])->name('users.edit');
-    Route::patch('/users/{user}', [BukuController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [BukuController::class, 'destroy'])->name('users.destroy');
+    Route::get('/buku', [BukuController::class, 'index'])->name('users.index');
+    Route::get('/buku/{buku}', [BukuController::class, 'show'])->name('users.show');
+    Route::get('/buku/create', [BukuController::class, 'create'])->name('users.create');
+    Route::post('/buku', [BukuController::class, 'store'])->name('users.store');
+    Route::get('/buku/{buku}/edit', [BukuController::class, 'edit'])->name('users.edit');
+    Route::patch('/buku/{buku}', [BukuController::class, 'update'])->name('users.update');
+    Route::delete('/buku/{buku}', [BukuController::class, 'destroy'])->name('users.destroy');
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/users', [GenreController::class, 'index'])->name('users.index');
-    Route::get('/users/{user}', [GenreController::class, 'show'])->name('users.show');
-    Route::get('/users/create', [GenreController::class, 'create'])->name('users.create');
-    Route::post('/users', [GenreController::class, 'store'])->name('users.store');
-    Route::get('/users/{user}/edit', [GenreController::class, 'edit'])->name('users.edit');
-    Route::patch('/users/{user}', [GenreController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [GenreController::class, 'destroy'])->name('users.destroy');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/genre', [GenreController::class, 'index'])->name('users.index');
+    Route::get('/genre/{genre}', [GenreController::class, 'show'])->name('users.show');
+    Route::get('/genre/create', [GenreController::class, 'create'])->name('users.create');
+    Route::post('/genre', [GenreController::class, 'store'])->name('users.store');
+    Route::get('/genre/{genre}/edit', [GenreController::class, 'edit'])->name('users.edit');
+    Route::patch('/genre/{genre}', [GenreController::class, 'update'])->name('users.update');
+    Route::delete('/genre/{genre}', [GenreController::class, 'destroy'])->name('users.destroy');
 });
 require __DIR__.'/auth.php';
