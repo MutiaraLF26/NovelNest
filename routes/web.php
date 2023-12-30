@@ -1,9 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\ProfileController;
+=======
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Auth;
+>>>>>>> 48121fdc9657c380445fe1c713a54e2fdf538d14
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +23,7 @@ use App\Http\Controllers\ProfileController;
 */
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('/');
 Route::get('/bestSeller', function () {
     return view('feedback');
 });
@@ -35,22 +41,32 @@ Route::get('/favorite', function () {
 });
 Route::get('/home', function () {
     return view('dashboard.user.index');
+})->name('home')->middleware('auth');
+
+
+Route::middleware(['guest'])->group(function() {
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/store', [AuthController::class, 'store'])->name('store');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
+    // Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
-Route::get('/login', function () {
-    return view('login.index');
+
+Route::middleware(['auth', 'role:user'])->group(function() {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
-Route::get('/register', function () {
-    return view('register.index');
+
+Route::middleware(['auth', 'role:admin'])->group(function() {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    // Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/admin/users', [AdminController::class, 'userIndex'])->name('userIndex');
+    Route::get('/admin/users/edit/{id}', [AdminController::class, 'userEdit'])->name('userEdit');
+    Route::put('/admin/users/update/{id}', [AdminController::class, 'updateUser'])->name('updateUser');
+    Route::get('/admin/users/create', [AdminController::class, 'userCreate'])->name('userCreate');
 });
-// admin
-Route::get('/admin', function () {
-    return view('dashboard.admin.layout.main');
-});
-Route::get('/admin/users', function () {
-    return view('dashboard.admin.users.index');
-});
-Route::get('/admin/genre', function () {
-    return view('dashboard.admin.genre.index');
+
+Route::controller(AdminController::class,)->group(function() {
+    Route::post('/admin/users/store', 'storeUser')->name('storeUser');
 });
 Route::get('/feedback', function () {
     return view('feedback');
