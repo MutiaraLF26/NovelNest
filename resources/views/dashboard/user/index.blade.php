@@ -4,7 +4,7 @@
     <div class="flex flex-wrap justify-center">
         @foreach ($novels as $n)
             <div class="max-w-sm mx-2 my-4 bg-white shadow-md rounded-lg overflow-hidden">
-                <img class="w-full h-64 object-cover object-center" src="{{ $n->gambar_novel ? asset($n->gambar_novel) : 'https://via.placeholder.com/800x400' }}" alt="Product Image">
+                <img class="w-full h-64 object-cover object-center" src="{{ $n->gambar_novel ? asset('storage/uploads/' .$n->gambar_novel) : 'https://via.placeholder.com/800x400' }}" alt="Product Images">
                 <div class="p-4">
                     <h2 class="text-xl font-semibold text-gray-800">{{ $n->nama_novel }}</h2>
                     <p class="text-gray-600 mt-2">{!! Str::limit($n->deskripsi_novel, 150) !!}</p>

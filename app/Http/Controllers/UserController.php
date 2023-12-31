@@ -24,13 +24,13 @@ class UserController extends Controller
     {
         $novels = Novel::all();
 
-        $novels->each(function ($novel) {
-            if ($novel->gambar_novel) {
-                $novel->gambar_novel = asset('storage/uploads/' . $novel->gambar_novel);
-            } else {
-                $novel->gambar_novel = null;
-            }
-        });
+        // $novels->each(function ($novel) {
+        //     if ($novel->gambar_novel) {
+        //         $novel->gambar_novel = asset('storage/uploads/' . $novel->gambar_novel);
+        //     } else {
+        //         $novel->gambar_novel = null;
+        //     }
+        // });
         return view('dashboard.user.index', compact('novels'));
     }
 
@@ -41,11 +41,11 @@ class UserController extends Controller
         $novel->increment('total_view_novel');
         // dd($novel);
 
-        if ($novel->gambar_novel) {
-            $novel->gambar_novel = asset('storage/uploads/' . $novel->gambar_novel);
-        } else {
-            $novel->gambar_novel = null;
-        }
+        // if ($novel->gambar_novel) {
+        //     $novel->gambar_novel = asset('storage/uploads/' . $novel->gambar_novel);
+        // } else {
+        //     $novel->gambar_novel = null;
+        // }
 
         if (!$novel) {
             // Novel not found, handle accordingly (e.g., show an error page)

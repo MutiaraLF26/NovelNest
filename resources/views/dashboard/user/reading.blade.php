@@ -4,7 +4,7 @@
 <div class="container mx-auto p-4">
     <div>
         <div class="max-w-3xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
-            <img class="w-full h-64 object-cover object-center" src="{{ $novel->gambar_novel ? asset($novel->gambar_novel) : 'https://via.placeholder.com/800x400' }}" alt="{{ $novel->nama_novel }}">
+            <img class="w-full h-64 object-cover object-center" src="{{ $novel->gambar_novel ? asset('storage/uploads/' .$novel->gambar_novel) : 'https://via.placeholder.com/800x400' }}" alt="{{ $novel->nama_novel }}">
             <div class="p-4">
                 <h2 class="text-xl font-semibold text-gray-800">{{ $novel->nama_novel }}</h2>
     
