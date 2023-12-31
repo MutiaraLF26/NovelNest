@@ -9,7 +9,7 @@
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
     <title>Home</title>
 </head>
-<body class="h-full">
+<body class="h-full" style="">
     <div class="min-h-full">
         @include('dashboard.layout.navbar')
         <main>
