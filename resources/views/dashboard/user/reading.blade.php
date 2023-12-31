@@ -58,14 +58,14 @@
                         {!! $novel->deskripsi_novel !!}
                     </div>
                 
-                    {{-- <div class="mt-4 flex justify-end">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="prevBtn" onclick="changeParagraph(-1)">Back</button>
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="nextBtn" onclick="changeParagraph(1)">Next</button>
+                    {{-- <div class="mt-4 flex justify-end bg-yellow-900">
+                        <button class="bg-yellow-900 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded" id="prevBtn" onclick="changeParagraph(-1)">Back</button>
+                        <button class="bg-yellow-900 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded" id="nextBtn" onclick="changeParagraph(1)">Next</button>
                     </div> --}}
                 </div>
             
                 {{-- Tombol "Kembali" --}}
-                <a href="{{ route('home') }}" class="text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-block">Kembali</a>
+                <a href="{{ route('home') }}" class="text-white mt-3 bg-yellow-900 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-block">Kembali</a>
             </div>
         </div>
     </div>

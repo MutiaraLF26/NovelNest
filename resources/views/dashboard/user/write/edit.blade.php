@@ -63,7 +63,7 @@
                     @endif
                 </div>
             </div>
-            <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-yellow-900 rounded-lg focus:ring-4 focus:ring-yellow-200 dark:focus:ring-yellow-900 hover:bg-yellow-400">
+            <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-yellow-900 rounded-lg focus:ring-4 focus:ring-yellow-200 dark:focus:ring-yellow-300 hover:bg-yellow-400">
                 Edit Novel
             </button>
         </form>
