@@ -11,7 +11,7 @@
         <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-3.jpg" alt="user photo">
         </button>
         <!-- Dropdown menu -->
-        <div class="z-50 hidden my-4 text-base list-none bg-yellow-500 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+        <div class="z-50 hidden my-4 text-base list-none bg-yellow-100 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
             <div class="px-4 py-3">
                 @if (Auth::check())
                     <span class="block text-sm text-gray-900 dark:text-white">{{ Auth::user()->name }}</span>
@@ -31,7 +31,7 @@
                         </li>
                     @else {{-- Jika bukan admin, anggap pengguna adalah user --}}
                         <li class="flex-1 items-center">
-                            <a href="{{ route('writeNovel') }}" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-yellow-400 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                            <a href="{{ route('writeNovel') }}" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-yellow-300 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                 <svg class="w-3 h-3 mr-2 mt-1 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279"/>
                                 </svg>
@@ -41,7 +41,7 @@
                     @endif
                 @endif
                 <li class="flex-1 items-center">
-                    <a href="{{ route('logoutUser') }}" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-yellow-400 dark:text-gray-200 dark:hover:text-white" onclick="event.preventDefault();
+                    <a href="{{ route('logoutUser') }}" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-yellow-300 dark:text-gray-200 dark:hover:text-white" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"><svg class="w-3 h-3 mr-2 mt-1 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 15">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3"/>
                     </svg> Sign Out</a>
