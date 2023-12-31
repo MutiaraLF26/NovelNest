@@ -101,12 +101,12 @@
 </section>
 <!-- Hero image End -->
 
-<section id="home" class="bg-blue-200 dark:bg-blue-200 pt-20 pb-16 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
+<section id="home" class="bg-yellow-700 dark:bg-yellow-700 pt-20 pb-16">
     <div class="py-10 px-8 mx-auto max-w-screen-xl text-center lg:py-20">
-        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-blue-900 md:text-5xl lg:text-6xl dark:text-blue-900">Selamat Datang Di Website NovelNest</h1>
-        <p class="mb-8 text-lg font-normal text-blue-900 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">NovelNest adalah Website yang mengenalkan dan mencerminkan beragam novel dengan membawa cerita ke buku yang diterbitkan dan ke rak buku di seluruh dunia. NovelNest menampilkan sebuah cerita website dan bisa kamu baca secara online.NovelNest tersebut akan update per-bab dengan jadwal tertentu, sehingga pembaca harus mengetahui jadwalnya agar tidak ketinggalan membaca.</p>
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl dark:text-white">Selamat Datang Di Website NovelNest</h1>
+        <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48 dark:text-white">NovelNest adalah Website yang mengenalkan dan mencerminkan beragam novel dengan membawa cerita ke buku yang diterbitkan dan ke rak buku di seluruh dunia. NovelNest menampilkan sebuah cerita website dan bisa kamu baca secara online.NovelNest tersebut akan update per-bab dengan jadwal tertentu, sehingga pembaca harus mengetahui jadwalnya agar tidak ketinggalan membaca.</p>
         <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-            <a href="{{ route('home') }}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+            <a href="{{ route('home') }}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-yellow-900 hover:bg-yellow-900 focus:ring-4 focus:ring-yellow-900 dark:focus:ring-yellow-900">
                 Mulai Baca
                 <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -119,10 +119,10 @@
 <section id="bestSeller" class="h-screen bg-Indigo dark:bg-Indigo-400 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
     <div class="flex-col justify-center h-full py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
         <div class="flex flex-col justify-center">
-            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">BESTSELLER 2023</h1>
-            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Novel Merindu Cahaya De Amstel adalah sebuah buku yang bercerita tentang kisah pahit sebuah kehidupan yang dijalani oleh Khadija, gadis Belanda yang memutuskan untuk masuk Islam. Setelah memutuskan untuk menjadi umat muslim, Khadija memiliki nama asli, yaitu Marienvenhofen...</p>
+            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-yellow-900 md:text-5xl lg:text-6xl dark:yellow-900">BESTSELLER 2023</h1>
+            <p class="mb-8 text-lg font-normal text-yellow-900 lg:text-xl dark:text-yellow-900">Novel Merindu Cahaya De Amstel adalah sebuah buku yang bercerita tentang kisah pahit sebuah kehidupan yang dijalani oleh Khadija, gadis Belanda yang memutuskan untuk masuk Islam. Setelah memutuskan untuk menjadi umat muslim, Khadija memiliki nama asli, yaitu Marienvenhofen...</p>
             <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0">
-                <a href="{{ route('home') }}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                <a href="{{ route('home') }}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-yellow-900 hover:bg-yellow-900 focus:ring-4 focus:ring-yellow-900 dark:focus:ring-yellow-900">
                     Baca Sekarang
                     <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -138,27 +138,27 @@
     </div>
 </section>
 
-<section id="feedback" class="bg-blue-200 dark:bg-blue-200 pt-35 pb-16 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
+<section id="feedback" class="bg-yellow-700 dark:bg-yellow-700 pt-35 pb-16">
 
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
-        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Dapatkan Cerita Favoritemu Di NovelNest</h1>
-        <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">berikan komentar agar menjadi website lebih baik lagi</p>
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl dark:text-white">Dapatkan Cerita Favoritemu Di NovelNest</h1>
+        <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48 dark:text-white">berikan komentar agar menjadi website lebih baik lagi</p>
         
         <form class="max-w-sm mx-auto">
-            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Komentar</label>
-            <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tulis di sini..."></textarea>
-            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center mt-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Simpan</button>
+            <label for="message" class="block mb-2 text-sm font-medium md:text-3xl text-white dark:text-white">Komentar</label>
+            <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-white bg-gray-50 rounded-lg border border-gray-300 focus:ring-yellow-600 focus:border-yellow-600 dark:bg-yellow-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-600 dark:focus:border-yellow-600" placeholder="Tulis di sini..."></textarea>
+            <button type="submit" class="text-white bg-yellow-900 hover:bg-yellow-900 focus:ring-4 focus:outline-none focus:ring-yellow-900 font-medium rounded-lg text-sm px-5 py-3 text-center mt-3 dark:bg-yellow-900 dark:hover:bg-yellow-900 dark:focus:ring-yellow-900">Simpan</button>
         </form>
     </div>
     <div class="bg-gradient-to-b from-blue-50 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0"></div>
 </section>
 
 
-<footer class="bg-blue-200 dark:bg-blue-200 pt-35 pb-2 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
+<footer class="bg-yellow-700 dark:bg-yellow-700 pt-35 pb-2">
     <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+    <span class="text-sm text-white sm:text-center dark:text-white">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
     </span>
-    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-white dark:text-white sm:mt-0">
         <li>
             <a href="#" class="hover:underline me-4 md:me-6">About</a>
         </li>

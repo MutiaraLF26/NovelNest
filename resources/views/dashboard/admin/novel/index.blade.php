@@ -76,7 +76,7 @@
                             {{ $n->nama_novel }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ Str::words($n->deskripsi_novel, 10) }}
+                            {!! Str::words($n->deskripsi_novel, 10) !!}
                         </td>
                         <td class="px-6 py-4">
                             {{ $n->user->name }}
