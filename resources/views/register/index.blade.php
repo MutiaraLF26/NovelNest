@@ -63,7 +63,7 @@
 
     <p class="mt-10 text-center text-sm text-gray-500">
       Already have an account?
-      <a href="/register" class="text-gray-500 hover:text-gray-900 focus:outline-none font-medium text-sm">Please, Log In Here!</a>
+      <a href="/login" class="text-gray-500 hover:text-gray-900 focus:outline-none font-medium text-sm">Please, Log In Here!</a>
 
     </p>
   </div>
