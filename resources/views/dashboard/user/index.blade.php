@@ -13,21 +13,21 @@
                     </svg>
                 </div>
                 <input type="search" id="search" name="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari disini ....." required>
-                <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-yellow-900 hover:bg-yellow-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-yellow-800 dark:hover:bg-yellow-800 dark:focus:ring-yellow-800">Cari</button>
+                <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-yellow-900 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-yellow-800 dark:hover:bg-yellow-800 dark:focus:ring-yellow-800">Cari</button>
             </div>
         </form>
     </div>
 
-    <div class="flex flex-wrap justify-center">
+    <div class="flex flex-wrap justify-center text-gray-200">
         @forelse ($novels as $n)
-            <div class="max-w-sm mx-2 my-4 bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="text-white max-w-sm mx-2 my-4 shadow-md rounded-lg overflow-hidden bg-yellow-600">
                 <img class="w-full h-64 object-cover object-center" src="{{ $n->gambar_novel ? asset($n->gambar_novel) : 'https://via.placeholder.com/800x400' }}" alt="Product Image">
-                <div class="p-4">
-                    <h2 class="text-xl font-semibold text-gray-800">{{ $n->nama_novel }}</h2>
+                <div class="p-4 bg-yellow-600" style="">
+                    <h2 class="text-xl font-semibold text-white">{{ $n->nama_novel }}</h2>
                     <p class="text-gray-600 mt-2">{!! Str::limit($n->deskripsi_novel, 150) !!}</p>
                     <div class="mt-4 flex items-center">
-                        <span class="text-gray-500 flex items-center">
-                            <svg class="w-auto h-3 text-gray-800 dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
+                        <span class="text-gray-100 flex items-center">
+                            <svg class="w-auto h-3 text-gray-100 dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
                                 <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                     <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
                                     <path d="M10 13c4.97 0 9-2.686 9-6s-4.03-6-9-6-9 2.686-9 6 4.03 6 9 6Z"/>
@@ -35,13 +35,13 @@
                             </svg>
                             <p>{{ $n->total_view_novel }}</p>
                         </span>
-                        <span class="text-gray-500 ml-5 flex items-center">
-                            <svg class="w-auto h-3 text-gray-800 dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 19">
+                        <span class="text-gray-100 ml-5 flex items-center">
+                            <svg class="w-auto h-3 text-gray-100 dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 19">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z"/>
                             </svg>
                             <p class="flex-1">{{ $n->total_like_novel }}</p>
                         </span>
-                        <span class="text-gray-500 ml-auto">{{ $n->jumlah_halaman_novel }} Halaman</span>
+                        <span class="text-gray-100 ml-auto">{{ $n->jumlah_halaman_novel }} Halaman</span>
                     </div>
                     {{-- bintang --}}
                     {{-- <div class="mt-4 flex items-center">
