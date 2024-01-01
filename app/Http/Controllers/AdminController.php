@@ -10,6 +10,7 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AdminController extends Controller
 {
@@ -93,9 +94,24 @@ class AdminController extends Controller
 
     public function deleteUser(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return redirect()->route('userIndex')->with('success', 'User deleted successfully');
+        try {
+            $user = User::findOrFail($id);
+            // Mendapatkan novel yang dimiliki oleh user
+            $novels = Novel::where('id_user', $id)->get();
+
+            // Menghapus setiap novel beserta kategorinya
+            foreach ($novels as $novel) {
+                $novel->category->deleteWithNovels();
+            }
+            $user->delete();
+            return redirect()->route('userIndex')->with('success', 'User created successfully');
+        } catch (ModelNotFoundException $e) {
+            // Menggunakan ModelNotFoundException, yang lebih spesifik, jika baris tidak ditemukan
+            return response()->json(['error' => 'Kategori not found'], 404);
+        } catch (\Exception $e) {
+            // Menangkap pengecualian umum
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     // kategori
@@ -180,9 +196,17 @@ class AdminController extends Controller
 
     public function deleteKategori(Request $request, $id)
     {
-        $kategori = Kategori::findOrFail($id);
-        $kategori->delete();
-        return redirect()->route('kategoriIndex')->with('success', 'Kategori deleted successfully');
+        try {
+            $kategori = Kategori::findOrFail($id);
+            $kategori->deleteWithNovels();
+            return redirect()->route('kategoriIndex')->with('success', 'Kategori deleted successfully');
+        } catch (ModelNotFoundException $e) {
+            // Menggunakan ModelNotFoundException, yang lebih spesifik, jika baris tidak ditemukan
+            return response()->json(['error' => 'Kategori not found'], 404);
+        } catch (\Exception $e) {
+            // Menangkap pengecualian umum
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     // Novel

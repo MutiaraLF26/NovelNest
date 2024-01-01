@@ -35,6 +35,6 @@ class DatabaseSeeder extends Seeder
             'role' => 'user',
         ]);
         Kategori::factory()->count(5)->create();
-        Novel::factory()->count(10)->create();
+        Novel::factory()->count(50)->create();
     }
 }

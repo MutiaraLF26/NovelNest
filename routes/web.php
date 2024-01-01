@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('/');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('/');
 
 Route::middleware(['guest'])->group(function() {
     Route::get('/register', [AuthController::class, 'register'])->name('register');
@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/like-novel/{novelId}', [UserController::class, 'likeNovel'])->name('likeNovel');
     Route::get('/riwayat', [UserController::class, 'showReadingHistory'])->name('showReadingHistory');
     Route::post('/live-search', [UserController::class, 'liveSearch'])->name('liveSearch');
+    Route::get('/favorite', [UserController::class, 'novelApiGoogle'])->name('novelApiGoogle');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function() {
@@ -74,6 +75,7 @@ Route::controller(AdminController::class,)->group(function() {
     Route::post('/admin/novel/store', 'novelStore')->name('novelStore');
 });
 Route::controller(UserController::class,)->group(function() {
+    Route::get('/', [UserController::class, 'index'])->name('/');
     // Route::post('/admin/users/store', 'storeUser')->name('storeUser');
     // Route::post('/admin/novel/store', 'novelStore')->name('novelStore');
 });
