@@ -50,7 +50,7 @@
                 <div class="sm:col-span-2">
                     <label for="deskripsi_novel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi novel</label>
                     <input id="deskripsi_novel" type="hidden" name="deskripsi_novel" value="{{ old('deskripsi_novel', $novel->deskripsi_novel ?? '') }}">
-                    <trix-editor input="deskripsi_novel"></trix-editor>
+                    <trix-editor data-trix-editor data-trix-content-type="text/html" input="deskripsi_novel"></trix-editor>
                     @if ($errors->has('deskripsi_novel'))
                     <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span> {{ $errors->first('deskripsi_novel') }}</p>
                     @endif

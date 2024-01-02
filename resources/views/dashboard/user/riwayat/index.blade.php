@@ -7,7 +7,7 @@
                 <img class="w-full h-64 object-cover object-center" src="{{ $n->novel->gambar_novel ? asset('storage/uploads/' .$n->novel->gambar_novel) : 'https://via.placeholder.com/800x400' }}" alt="Product Image">
                 <div class="p-4">
                     <h2 class="text-xl font-semibold text-gray-800">{{ $n->novel->nama_novel }}</h2>
-                    <p class="text-gray-600 mt-2">{!! Str::limit($n->novel->deskripsi_novel, 150) !!}</p>
+                    <p class="text-gray-600 mt-2">{!! Str::limit(strip_tags($n->novel->deskripsi_novel, '<br><em>'), 150) !!}</p>
                     <div class="mt-4 flex items-center">
                         <span class="text-gray-500 flex items-center">
                             <svg class="w-auto h-3 text-gray-800 dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">

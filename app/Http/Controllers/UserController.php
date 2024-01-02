@@ -47,7 +47,15 @@ class UserController extends Controller
             } else {
                 $novel->gambar_novel = null;
             }
+
+            if ($novel->deskripsi_novel) {
+                $novel->deskripsi_novel = strip_tags($novel->deskripsi_novel, '<br><em>');
+            } else {
+                $novel->deskripsi_novel = null;
+            }
         });
+
+
         return view('dashboard.user.index', compact('novels'));
     }
 
@@ -227,12 +235,20 @@ class UserController extends Controller
     public function mybookIndex()
     {
         $userId = Auth::id();
+
         $novels = Novel::where('id_user', $userId)->get();
+
         $novels->each(function ($novel) {
             if ($novel->gambar_novel) {
                 $novel->gambar_novel = asset('storage/uploads/' . $novel->gambar_novel);
             } else {
                 $novel->gambar_novel = null;
+            }
+
+            if ($novel->deskripsi_novel) {
+                $novel->deskripsi_novel = strip_tags($novel->deskripsi_novel, '<br><em>');
+            } else {
+                $novel->deskripsi_novel = null;
             }
         });
         return view('dashboard.user.mybook.index', compact('novels'));
