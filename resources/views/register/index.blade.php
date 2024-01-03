@@ -12,7 +12,7 @@
 <section class="h-screen bg-cover bg-no-repeat bg-center bg-blend-multiply" style="background-image: url('images/bgLoginRegister.jpg');">
 <div class="flex min-h-full flex-col justify-center px-2 py-2 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-  <img class="mx-auto h-20 w-auto" src="images/logoLoginRegister.jpg" alt="Logo">
+  <img class="mx-auto h-20 w-auto" src="{{ asset('/images/logoLR.png')}}" alt="Logo">
     <h2 class="mt-2 text-center text-4xl font-bold leading-9 tracking-tight text-gray-900">Register</h2>
   </div>
 
@@ -60,7 +60,7 @@
         @endif
       </div>
       <div>
-        <button type="submit" class="flex w-full justify-center rounded-md bg-gray-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register</button>
+        <button type="submit" class="flex w-full justify-center text-white bg-yellow-800 hover:bg-yellow-900 focus:ring-4 focus:outline-none focus:ring-yellow-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Register</button>
       </div>
     </form>
 

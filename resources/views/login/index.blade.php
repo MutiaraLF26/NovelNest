@@ -12,7 +12,7 @@
 <section class="h-screen bg-cover bg-no-repeat bg-center bg-blend-multiply" style="background-image: url('images/bgLoginRegister.jpg');">
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-  <img class="mx-auto h-20 w-auto" src="images/logoLR.png" alt="Logo">
+  <img class="mx-auto h-20 w-auto" src="{{ asset('/images/logoLR.png')}}" alt="Logo">
     <h2 class="mt-2 text-center text-4xl font-bold leading-9 tracking-tight text-gray-900">Log In</h2>
   </div>
 
