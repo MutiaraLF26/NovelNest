@@ -7,13 +7,30 @@ use App\Models\Novel;
 use App\Models\RiwayatBaca;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
-    // public function index()
-    // {
-    //     return view('dashboard.user.index');
-    // }
+    public function index()
+    {
+        try {
+            $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
+                'q' => 'novel',
+                'country' => 'ID',
+                'orderBy' => 'newest',
+                'maxResults' => '20',
+                'Key' => 'AIzaSyBBRrjVueTMd_DW_89saxDLPxjuQNuzUyc',
+            ]);
+    
+            // Ambil hasil dari respons JSON
+            $novels = $response->json()['items'] ?? [];
+            // dd($novels);
+    
+            return view('welcome', compact('novels'));
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
     public function kategori()
     {
         $kategoris = Kategori::all(); // Mengambil semua data kategori
@@ -30,7 +47,15 @@ class UserController extends Controller
             } else {
                 $novel->gambar_novel = null;
             }
+
+            if ($novel->deskripsi_novel) {
+                $novel->deskripsi_novel = strip_tags($novel->deskripsi_novel, '<br><em>');
+            } else {
+                $novel->deskripsi_novel = null;
+            }
         });
+
+
         return view('dashboard.user.index', compact('novels'));
     }
 
@@ -210,12 +235,20 @@ class UserController extends Controller
     public function mybookIndex()
     {
         $userId = Auth::id();
+
         $novels = Novel::where('id_user', $userId)->get();
+
         $novels->each(function ($novel) {
             if ($novel->gambar_novel) {
                 $novel->gambar_novel = asset('storage/uploads/' . $novel->gambar_novel);
             } else {
                 $novel->gambar_novel = null;
+            }
+
+            if ($novel->deskripsi_novel) {
+                $novel->deskripsi_novel = strip_tags($novel->deskripsi_novel, '<br><em>');
+            } else {
+                $novel->deskripsi_novel = null;
             }
         });
         return view('dashboard.user.mybook.index', compact('novels'));
@@ -289,4 +322,41 @@ class UserController extends Controller
         // dd($riwayatBaca);
         return view('dashboard.user.riwayat.index', compact('riwayatBaca'));
     }
+
+    // live search
+    public function liveSearch(Request $request)
+    {
+        $search = $request->get('search');
+        $novels = Novel::where('nama_novel', 'LIKE', '%' . $search . '%')->get();
+        $novels->each(function ($novel) {
+            if ($novel->gambar_novel) {
+                $novel->gambar_novel = asset('storage/uploads/' . $novel->gambar_novel);
+            } else {
+                $novel->gambar_novel = null;
+            }
+        });
+        return view('dashboard.user.index', compact('novels'));
+    }
+
+    // novel google API Books
+    public function novelApiGoogle() 
+    {
+        try {
+            $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
+                'q' => 'novel',
+                'country' => 'ID',
+                'maxResults' => '10',
+                'Key' => 'AIzaSyBBRrjVueTMd_DW_89saxDLPxjuQNuzUyc',
+            ]);
+    
+            // Ambil hasil dari respons JSON
+            $novels = $response->json()['items'] ?? [];
+            // dd($novels);
+    
+            return view('dashboard.user.favorite.index', compact('novels'));
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
 }

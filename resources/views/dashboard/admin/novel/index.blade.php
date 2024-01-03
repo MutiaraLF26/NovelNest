@@ -2,13 +2,18 @@
 
 @section('content')
     <div class="mt-4 mb-5 flex justify-start">
-        <a href="{{ route('novelCreate') }}" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <a href="{{ route('novelCreate') }}" class="text-white bg-yellow-900 hover:bg-yellow-700 focus:ring-4 focus:outline-none focus:ring-yellow-700 font-medium rounded-lg text-sm px-4 py-2 dark:bg-yellow-900 dark:hover:bg-yellow-700 dark:focus:ring-yellow-700">
             Tambah Novel
+        </a>
+    </div>
+    <div class="mb-5 flex justify-end">
+        <a href="{{ route('novelIndexPdf') }}" class="text-white bg-yellow-900 hover:bg-yellow-700 focus:ring-4 focus:outline-none focus:ring-yellow-700 font-medium rounded-lg text-sm px-4 py-2 dark:bg-yellow-900 dark:hover:bg-yellow-700 dark:focus:ring-yellow-700 ml-2">
+            PDF Novel
         </a>
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="text-xs text-white uppercase bg-yellow-900 dark:bg-yellow-900 dark:text-white">
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         Nomer
@@ -61,8 +66,11 @@
                             </a>
                         </div>
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="py-3">
                         <span class="sr-only">Edit</span>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <span class="sr-only">Hapus</span>
                     </th>
                 </tr>
             </thead>
@@ -90,8 +98,15 @@
                         <td class="px-6 py-4">
                             {{ $n->total_like_novel }}
                         </td>
-                        <td class="px-6 py-4 text-right">
+                        <td class="py-4 text-right">
                             <a href="{{ route('novelEdit', ['id' => $n->id]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <a href="{{ route('deleteNovel', ['id' => $n->id]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $n->id }}').submit();">Hapus</a>
+                            <form id="delete-form-{{ $n->id }}" action="{{ route('deleteNovel', ['id' => $n->id]) }}" method="POST" style="display: none;">
+                                @csrf
+                                @method('DELETE')
+                            </form>
                         </td>
                     </tr>
                 @endforeach

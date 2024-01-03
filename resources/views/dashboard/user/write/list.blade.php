@@ -3,7 +3,7 @@
 
 @section('container')
     <div class="text-center">
-        <button class="flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+        <button class="flex items-center text-white bg-yellow-900 hover:bg-yellow-400 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-900 dark:hover:bg-yellow-400 focus:outline-none dark:focus:ring-yellow-400" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
@@ -11,7 +11,7 @@
         </button>
     </div>
     <div class="my-8 mx-6 mt-4 mb-5 flex justify-start">
-        <a href="{{ route('writeNovel') }}" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <a href="{{ route('writeNovel') }}" class="text-white bg-yellow-900 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-yellow-900 dark:hover:bg-yellow-400 dark:focus:ring-yellow-400">
             Tambah Novel
         </a>
     </div>
@@ -85,7 +85,7 @@
                             {{ $n->nama_novel }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ Str::words($n->deskripsi_novel, 10) }}
+                            {!! Str::words($n->deskripsi_novel, 10) !!}
                         </td>
                         <td class="px-6 py-4">
                             {{ $n->user->name }}

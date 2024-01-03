@@ -9,13 +9,21 @@ use App\Models\User;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AdminController extends Controller
 {
     // dashboard
     public function index()
     {
-        return view('dashboard.admin.index');
+        $novels = Novel::all();
+
+        $data = [
+            'labels' => $novels->pluck('nama_novel'),
+            'data' => $novels->pluck('total_view_novel'),
+        ];
+        return view('dashboard.admin.index', compact('data'));
     }
     // users
     public function userIndex()
@@ -82,6 +90,28 @@ class AdminController extends Controller
         // $user->assignRole($request->role);
 
         return redirect()->route('userIndex')->with('success', 'User created successfully');
+    }
+
+    public function deleteUser(Request $request, $id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            // Mendapatkan novel yang dimiliki oleh user
+            $novels = Novel::where('id_user', $id)->get();
+
+            // Menghapus setiap novel beserta kategorinya
+            foreach ($novels as $novel) {
+                $novel->category->deleteWithNovels();
+            }
+            $user->delete();
+            return redirect()->route('userIndex')->with('success', 'User created successfully');
+        } catch (ModelNotFoundException $e) {
+            // Menggunakan ModelNotFoundException, yang lebih spesifik, jika baris tidak ditemukan
+            return response()->json(['error' => 'Kategori not found'], 404);
+        } catch (\Exception $e) {
+            // Menangkap pengecualian umum
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     // kategori
@@ -164,11 +194,35 @@ class AdminController extends Controller
         return redirect()->route('kategoriIndex')->with('success', 'Kategori updated successfully');
     }
 
+    public function deleteKategori(Request $request, $id)
+    {
+        try {
+            $kategori = Kategori::findOrFail($id);
+            $kategori->deleteWithNovels();
+            return redirect()->route('kategoriIndex')->with('success', 'Kategori deleted successfully');
+        } catch (ModelNotFoundException $e) {
+            // Menggunakan ModelNotFoundException, yang lebih spesifik, jika baris tidak ditemukan
+            return response()->json(['error' => 'Kategori not found'], 404);
+        } catch (\Exception $e) {
+            // Menangkap pengecualian umum
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
     // Novel
     public function novelIndex()
     {
         $novels = Novel::all(); // Mengambil semua data novel
         return view('dashboard.admin.novel.index', compact('novels'));
+    }
+
+    public function novelIndexPdf()
+    {
+        $novels = Novel::all(); // Mengambil semua data novel
+        $pdf = Pdf::loadview('dashboard.admin.pdf.novel', compact('novels'));
+        // $pdf = app()->make('dompdf.wrapper');
+        // $pdf->loadView('dashboard.admin.pdf.novel', compact('novels'));
+        return $pdf->download('reporting-novel.pdf');
     }
 
     public function novelEdit(Request $request, $id)
@@ -268,6 +322,13 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
+    }
+
+    public function deleteNovel(Request $request, $id)
+    {
+        $novel = Novel::findOrFail($id);
+        $novel->delete();
+        return redirect()->route('novelIndex')->with('success', 'Post deleted successfully');
     }
 
     public function logoutAdmin(Request $request)

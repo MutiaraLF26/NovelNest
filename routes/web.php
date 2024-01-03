@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('/');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('/');
 
 Route::middleware(['guest'])->group(function() {
     Route::get('/register', [AuthController::class, 'register'])->name('register');
@@ -43,6 +43,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/kategori', [UserController::class, 'listKategori'])->name('listKategori');
     Route::post('/like-novel/{novelId}', [UserController::class, 'likeNovel'])->name('likeNovel');
     Route::get('/riwayat', [UserController::class, 'showReadingHistory'])->name('showReadingHistory');
+    Route::post('/live-search', [UserController::class, 'liveSearch'])->name('liveSearch');
+    Route::get('/favorite', [UserController::class, 'novelApiGoogle'])->name('novelApiGoogle');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function() {
@@ -52,15 +54,19 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::get('/admin/users/edit/{id}', [AdminController::class, 'userEdit'])->name('userEdit');
     Route::put('/admin/users/update/{id}', [AdminController::class, 'updateUser'])->name('updateUser');
     Route::get('/admin/users/create', [AdminController::class, 'userCreate'])->name('userCreate');
+    Route::delete('/admin/users/delete/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
     Route::get('/admin/ketegori', [AdminController::class, 'kategoriIndex'])->name('kategoriIndex');
     Route::get('/admin/ketegori/edit/{id}', [AdminController::class, 'kategoriEdit'])->name('kategoriEdit');
     Route::put('/admin/ketegori/update/{id}', [AdminController::class, 'updateKategori'])->name('updateKategori');
     Route::get('/admin/ketegori/create', [AdminController::class, 'kategoriCreate'])->name('kategoriCreate');
     Route::post('/admin/ketegori/store', [AdminController::class, 'storeKategori'])->name('storeKategori');
+    Route::delete('/admin/ketegori/delete/{id}', [AdminController::class, 'deleteKategori'])->name('deleteKategori');
     Route::get('/admin/novel', [AdminController::class, 'novelIndex'])->name('novelIndex');
     Route::get('/admin/novel/edit/{id}', [AdminController::class, 'novelEdit'])->name('novelEdit');
     Route::get('/admin/novel/create', [AdminController::class, 'novelCreate'])->name('novelCreate');
     Route::put('/admin/novel/update/{id}', [AdminController::class, 'updateNovel'])->name('updateNovel');
+    Route::get('/admin/novel/pdf', [AdminController::class, 'novelIndexPdf'])->name('novelIndexPdf');
+    Route::delete('/admin/novel/delete/{id}', [AdminController::class, 'deleteNovel'])->name('deleteNovel');
     // Route::post('/admin/novel/store', 'AdminController@novelStore')->name('novelStore');
 });
 
@@ -69,6 +75,7 @@ Route::controller(AdminController::class,)->group(function() {
     Route::post('/admin/novel/store', 'novelStore')->name('novelStore');
 });
 Route::controller(UserController::class,)->group(function() {
+    Route::get('/', [UserController::class, 'index'])->name('/');
     // Route::post('/admin/users/store', 'storeUser')->name('storeUser');
     // Route::post('/admin/novel/store', 'novelStore')->name('novelStore');
 });

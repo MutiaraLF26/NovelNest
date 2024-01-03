@@ -7,7 +7,7 @@
                 <img class="w-full h-64 object-cover object-center" src="{{ $n->novel->gambar_novel ? asset('storage/uploads/' .$n->novel->gambar_novel) : 'https://via.placeholder.com/800x400' }}" alt="Product Image">
                 <div class="p-4">
                     <h2 class="text-xl font-semibold text-gray-800">{{ $n->novel->nama_novel }}</h2>
-                    <p class="text-gray-600 mt-2">{!! Str::limit($n->novel->deskripsi_novel, 150) !!}</p>
+                    <p class="text-gray-600 mt-2">{!! Str::limit(strip_tags($n->novel->deskripsi_novel, '<br><em>'), 150) !!}</p>
                     <div class="mt-4 flex items-center">
                         <span class="text-gray-500 flex items-center">
                             <svg class="w-auto h-3 text-gray-800 dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
@@ -27,7 +27,7 @@
                         <span class="text-gray-500 ml-auto">{{ $n->novel->jumlah_halaman_novel }} Halaman</span>
                     </div>
                     {{-- bintang --}}
-                    <div class="mt-4 flex items-center">
+                    {{-- <div class="mt-4 flex items-center">
                         <div class="flex items-center space-x-2">
                             <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                 <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
@@ -46,10 +46,10 @@
                             </svg>
                         </div>
                         <span class="text-gray-500 ml-auto">123 Reviews</span>
-                    </div>
+                    </div> --}}
             
                     <div class="mt-4 flex items-center justify-between">
-                        <a href="{{ route('readNovel', ['id' => $n->novel->id]) }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-block">
+                        <a href="{{ route('readNovel', ['id' => $n->id]) }}" class="text-white bg-yellow-900 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-block">
                             Baca Sekarang
                         </a>
                     </div>
